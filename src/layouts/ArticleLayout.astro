@@ -1,0 +1,61 @@
+---
+import SiteLayout from "./SiteLayout.astro";
+const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+<SiteLayout title={`${frontmatter.title} | Karini Zanetti`}>
+  <article class="article">
+    <a class="back" href="/articles">← All articles</a>
+    <h1>{frontmatter.title}</h1>
+    <p class="meta">By {frontmatter.authors ?? "Karini Zanetti"} · {date}</p>
+
+    {frontmatter.originalUrl && (
+      <div class="original">
+        <span>Originally published in</span>
+        <strong>{frontmatter.originalJournal}</strong>
+        <a class="button" href={frontmatter.originalUrl} target="_blank" rel="noopener">
+          Read the original publication
+        </a>
+      </div>
+    )}
+
+    {frontmatter.heroImage && (
+      <img class="hero-img" src={frontmatter.heroImage} alt={frontmatter.title} />
+    )}
+    <slot />
+  </article>
+</SiteLayout>
+
+<style is:global>
+  .article { max-width: 720px; margin: 0 auto; }
+  .article .back { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .article .meta { color: #6b6b6b; font-size: 0.95rem; }
+  .article .hero-img { width: 100%; border-radius: 6px; margin: 1.5rem 0; }
+  .article h2 { margin-top: 2.2rem; }
+  .article a { color: var(--green); }
+  .article blockquote {
+    border-left: 4px solid var(--gold);
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    color: #555;
+  }
+  .article .original {
+    background: #fff;
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+  .article .original span { color: #6b6b6b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .article .original .button { color: #fff; margin-top: 0.4rem; }
+  .article ul, .article ol { padding-left: 1.4rem; }
+</style>

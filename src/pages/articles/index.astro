@@ -1,0 +1,39 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+const files = import.meta.glob("./*.md", { eager: true });
+const articles = Object.values(files)
+  .map((a) => ({ ...a.frontmatter, url: a.url }))
+  .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+const fmt = (d) =>
+  new Date(d).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+---
+<SiteLayout title="Articles | Karini Zanetti">
+  <h1>Articles</h1>
+  <p>Insights on holding companies, family succession planning and asset protection.</p>
+  <div class="cards">
+    {articles.map((a) => (
+      <a class="card article-card" href={a.url}>
+        {a.heroImage && <img src={a.heroImage} alt={a.title} />}
+        <h3>{a.title}</h3>
+        <p class="date">{fmt(a.pubDate)}</p>
+        <p>{a.description}</p>
+        {a.originalJournal && <p class="source">Published in {a.originalJournal}</p>}
+      </a>
+    ))}
+  </div>
+</SiteLayout>
+
+<style>
+  .article-card { text-decoration: none; color: inherit; display: block; transition: transform 0.15s; }
+  .article-card:hover { transform: translateY(-3px); }
+  .article-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; margin-bottom: 0.8rem; }
+  .date { color: #6b6b6b; font-size: 0.85rem; margin: 0 0 0.5rem; }
+  .source { color: var(--green); font-size: 0.85rem; font-weight: 600; margin-top: 0.8rem; }
+</style>

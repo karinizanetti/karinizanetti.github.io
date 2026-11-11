@@ -1,0 +1,67 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+<SiteLayout title="Karini Zanetti | Brazilian Attorney">
+  <section class="hero hero-grid">
+    <div>
+      <span class="tag">Brazilian Attorney</span>
+      <h1>Agribusiness Succession and Holding Structures</h1>
+      <p>Clear legal insights on holding companies and family succession planning, helping farmers, business owners and families protect their land and pass it on to the next generation, in Brazil and across borders.</p>
+      <p class="audience">For U.S. investors and farmers who wish to invest in Brazil, and for Brazilians interested in land in the United States.</p>
+      <a class="button" href="/articles">Read the Articles</a>
+    </div>
+    <img class="portrait" src="/images/karini.jpg" alt="Karini Zanetti, Brazilian attorney" />
+  </section>
+
+  <section>
+    <h2>Areas of Focus</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Holding Structures</h3>
+        <p>Organizing family and business assets under a holding company for clearer governance and stronger protection.</p>
+      </div>
+      <div class="card">
+        <h3>Family Succession Planning</h3>
+        <p>Planning the transfer of farms and businesses to the next generation, with continuity and fewer family disputes.</p>
+      </div>
+      <div class="card">
+        <h3>Asset Protection</h3>
+        <p>Safeguarding the property of rural producers, entrepreneurs and real estate owners.</p>
+      </div>
+      <div class="card">
+        <h3>Investing in Brazil</h3>
+        <p>Legal insights for U.S. investors who wish to invest in Brazilian agribusiness, and for Brazilians interested in land in the United States.</p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .audience {
+    color: var(--green);
+    font-weight: 600;
+    border-left: 4px solid var(--gold);
+    padding-left: 1rem;
+    margin: 1.2rem 0 1.6rem;
+  }
+  .portrait {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 4px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    justify-self: center;
+  }
+  @media (max-width: 700px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 260px; }
+  }
+</style>

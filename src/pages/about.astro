@@ -1,0 +1,55 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+---
+<SiteLayout title="About | Karini Zanetti">
+  <h1>About</h1>
+  <div class="about-top">
+    <p>
+      I am a Brazilian attorney with more than five years of experience in Civil Law, focusing on asset protection for rural producers, business owners and real estate owners.
+    </p>
+    <img class="portrait" src="/images/karini.jpg" alt="Karini Zanetti, Brazilian attorney" />
+  </div>
+
+  <h2>Education</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Law Degree</h3>
+      <p>UNIGRAN, Dourados, Mato Grosso do Sul, Brazil.</p>
+    </div>
+    <div class="card">
+      <h3>Postgraduate Degree</h3>
+      <p>Holding Companies and Succession Planning, Escola Brasileira de Pós-Graduação. Completed in 2023.</p>
+    </div>
+    <div class="card">
+      <h3>Postgraduate Studies (in progress)</h3>
+      <p>Migration and Immigration Law and the International Scenario, Escola Brasileira de Pós-Graduação.</p>
+    </div>
+  </div>
+
+  <h2>Professional Experience</h2>
+  <p>
+    I currently work as an attorney at Grupo Marcus Faria, in Dourados, Mato Grosso do Sul, where I represent clients in enforcement actions. My practice centers on Civil Law and on protecting the assets of rural producers, entrepreneurs and property owners.
+  </p>
+</SiteLayout>
+
+<style>
+  .about-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .portrait {
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 4px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    justify-self: center;
+  }
+  @media (max-width: 700px) {
+    .about-top { grid-template-columns: 1fr; }
+  }
+</style>
